@@ -122,7 +122,7 @@ export default function AffiliateSection({ currentLang }: AffiliateSectionProps)
             {/* Application CTAs */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-4">
               <a
-                href="https://gumroad.com"
+                href="https://novaflowlabs.gumroad.com/affiliates"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-center space-x-1.5 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-md transition-all duration-300"
