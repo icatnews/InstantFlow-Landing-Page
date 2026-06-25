@@ -40,6 +40,12 @@ export default function App() {
       
       const gumroadLinks = document.querySelectorAll('a[href*="gumroad.com"], .buy-btn, a.buy-btn');
       gumroadLinks.forEach((link) => {
+        const currentHref = link.getAttribute('href');
+        if (currentHref && currentHref.includes('/affiliates')) {
+          // Keep the affiliate link intact
+          link.setAttribute('href', 'https://novaflowlabs.gumroad.com/affiliates');
+          return;
+        }
         link.setAttribute('href', targetUrl);
       });
     }, 50);
