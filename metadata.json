@@ -1,0 +1,6 @@
+{
+  "name": "InstantFlow",
+  "description": "Next-generation AI-powered voice typing and formatting tool for Windows power users. Standalone utility with sub-second custom dictionary matching and smart model routing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
