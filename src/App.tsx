@@ -15,7 +15,6 @@ import PricingRoadmap from './components/PricingRoadmap';
 import AffiliateSection from './components/AffiliateSection';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import AlternatingShowcase from './components/AlternatingShowcase';
 import { Language } from './types';
 
 export default function App() {
@@ -278,9 +277,6 @@ export default function App() {
 
         {/* FEATURES GRID SECTION */}
         <FeatureGrid currentLang={currentLang} />
-
-        {/* ALTERNATING HIGH-END SHOWCASE */}
-        <AlternatingShowcase currentLang={currentLang} />
 
         {/* TESTIMONIALS GRID */}
         <Testimonials currentLang={currentLang} />
