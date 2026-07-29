@@ -321,27 +321,27 @@ export const userFAQs: FAQItem[] = [
   {
     id: 'mac-support',
     question: {
-      en: 'Does InstantFlow support macOS or Linux?',
-      zh: 'InstantFlow 是否支援 macOS 或 Linux 系統？',
-      hans: 'InstantFlow 是否支持 macOS 或 Linux 系统？'
+      en: 'Does InstantFlow support macOS?',
+      zh: 'InstantFlow 是否支援 macOS 系統？',
+      hans: 'InstantFlow 是否支持 macOS 系统？'
     },
     answer: {
-      en: 'Currently, InstantFlow is optimized specifically as a lightweight Windows native power-user executable. Expanding native support to other OS variants is under review for future roadmap iterations.',
-      zh: '目前，InstantFlow 專為 Windows 系統的高階使用者進行了極致的效能優化與輕量化打包。未來我們會評估將此原生體驗擴展至 macOS 與 Linux 的可行性。',
-      hans: '目前，InstantFlow 专为 Windows 系统的高阶使用者进行了极致的效能优化与轻量化打包。未来我们会评估将此原生体验扩展至 macOS 与 Linux 的可行性。'
+      en: 'Yes! InstantFlow v1.3.1 officially supports both Windows and macOS natively! We offer Windows Dual-PC Pass ($59 for 2 PCs), Mac Dual-Mac Pass ($59 for 2 Macs), and the Ultimate Cross-Platform Pass ($79 for 1 Win + 1 Mac).',
+      zh: '是的！InstantFlow v1.3.1 已正式支援 Windows 與 macOS 雙平台原生執行！我們提供 Windows Dual-PC Pass（$59，授權 2 台 Windows）、Mac Dual-Mac Pass（$59，授權 2 台 Mac），以及【熱銷推薦】Ultimate Cross-Platform Pass（$79，同時擁有 1 台 Win + 1 台 Mac 授權）。',
+      hans: '是的！InstantFlow v1.3.1 已正式支持 Windows 与 macOS 双平台原生执行！我们提供 Windows Dual-PC Pass（$59，授权 2 台 Windows）、Mac Dual-Mac Pass（$59，授权 2 台 Mac），以及【热销推荐】Ultimate Cross-Platform Pass（$79，同时拥有 1 台 Win + 1 台 Mac 授权）。'
     }
   },
   {
     id: 'license-terms',
     question: {
-      en: 'What are the license terms for a single purchase?',
-      zh: '一次性購買的授權條款是什麼？',
-      hans: '一次性购买的授权条款是什么？'
+      en: 'What are the license terms for a purchase?',
+      zh: '一次性買斷的授權條款是什麼？',
+      hans: '一次性买断的授权条款是什么？'
     },
     answer: {
-      en: 'A single standard license key grants you activation rights on up to 2 personal computers simultaneously, with free permanent upgrades to all v1.x iterations.',
-      zh: '購買一份標準授權金鑰，您即可同時在最多 2 台個人電腦上啟動軟體，並享有所有 v1.x 系列版本的永久免費升級服務。',
-      hans: '购买一份标准授权金钥，您即可同时在最多 2 台个人电脑上启动软件，并享有所有 v1.x 系列版本的永久免费升级服务。'
+      en: 'We offer three flexible lifetime passes: Windows Dual-PC Pass ($59 for 2 Windows PCs), Mac Dual-Mac Pass ($59 for 2 Mac computers), and Ultimate Cross-Platform Pass ($79 for 1 Windows + 1 Mac). All passes include lifetime access and free updates to all v1.x iterations.',
+      zh: '我們提供三種靈活的終身買斷方案：Windows Dual-PC Pass（$59，可授權 2 台 Windows）、Mac Dual-Mac Pass（$59，可授權 2 台 Mac），以及熱銷推薦的 Ultimate Cross-Platform Pass（$79，可授權 1 台 Windows + 1 台 Mac）。所有方案均享永久使用與 v1.x 系列免費升級。',
+      hans: '我们提供三种灵活的终身买断方案：Windows Dual-PC Pass（$59，可授权 2 台 Windows）、Mac Dual-Mac Pass（$59，可授权 2 台 Mac），以及热销推荐的 Ultimate Cross-Platform Pass（$79，可授权 1 台 Windows + 1 台 Mac）。所有方案均享永久使用与 v1.x 系列免费升级。'
     }
   }
 ];

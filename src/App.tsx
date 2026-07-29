@@ -22,20 +22,13 @@ export default function App() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState<boolean>(false);
   const [isTermsOpen, setIsTermsOpen] = useState<boolean>(false);
 
-  // Dynamic purchase URL strictly based on current language for dynamic language routing (ignoring bookmark inputs for buy-btn redirection)
-  const resolvedStoreUrl = useMemo(() => {
-    if (currentLang === 'en') {
-      return 'https://novaflowlabs.gumroad.com/l/instantflow';
-    }
-    return 'https://novaflowlabs.gumroad.com/l/instantflow-cn';
-  }, [currentLang]);
+  // Unified purchase URL for all languages
+  const resolvedStoreUrl = 'https://novaflowlabs.gumroad.com/l/instantflow';
 
-  // Force direct DOM updates to ensure absolute synchronicity for all Gumroad purchase links (Atomic Locale Update)
+  // Force direct DOM updates to ensure absolute synchronicity for all Gumroad purchase links
   useEffect(() => {
     const timer = setTimeout(() => {
-      const targetUrl = currentLang === 'en' 
-        ? 'https://novaflowlabs.gumroad.com/l/instantflow' 
-        : 'https://novaflowlabs.gumroad.com/l/instantflow-cn';
+      const targetUrl = 'https://novaflowlabs.gumroad.com/l/instantflow';
       
       const gumroadLinks = document.querySelectorAll('a[href*="gumroad.com"], .buy-btn, a.buy-btn');
       gumroadLinks.forEach((link) => {
@@ -107,7 +100,7 @@ export default function App() {
               <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-indigo-100 shadow-sm">
                 <span className="flex h-2 w-2 rounded-full bg-indigo-600 animate-ping" />
                 <span className="text-xs font-mono font-bold tracking-wider text-indigo-700 uppercase">
-                  {t('V1.3 Focus Upgrade Live', 'V1.3 重量級升級全新登場', 'V1.3 重量级升级全新登场')}
+                  {t('V1.3.1 Win & Mac Dual-Platform Live', 'V1.3.1 Win & Mac 雙平台支援登場', 'V1.3.1 Win & Mac 双平台支持登场')}
                 </span>
               </div>
 
@@ -133,9 +126,9 @@ export default function App() {
               {/* Subtext */}
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
                 {t(
-                  'Welcome to InstantFlow by NovaFlow Labs. The next-generation, offline-first AI-powered voice typing & formatting tool for Windows power users. Dictate, polish, and paste in O(N) linear time.',
-                  '歡迎入主 NovaFlow Labs 旗下 InstantFlow 極客流。專為 Windows 高階使用者打造的新一代極速 AI 語音輸入與格式美化工具。秒速轉錄、極速修正、完美輸入。',
-                  '欢迎入主 NovaFlow Labs 旗下 InstantFlow 极客流。专为 Windows 高阶使用者打造的新一代极速 AI 语音输入与格式美化工具。秒速转录、极速修正、完美输入。'
+                  'Welcome to InstantFlow by NovaFlow Labs. The next-generation, offline-first AI-powered voice typing & formatting tool for Windows & Mac power users. Dictate, polish, and paste in O(N) linear time.',
+                  '歡迎入主 NovaFlow Labs 旗下 InstantFlow 極客流。專為 Windows 與 Mac 高階使用者打造的新一代極速 AI 語音輸入與格式美化工具。秒速轉錄、極速修正、完美輸入。',
+                  '欢迎入主 NovaFlow Labs 旗下 InstantFlow 极客流。专为 Windows 与 Mac 高阶使用者打造的新一代极速 AI 语音输入与格式美化工具。秒速转录、极速修正、完美输入。'
                 )}
               </p>
 
@@ -166,9 +159,9 @@ export default function App() {
               {/* Small trust caption */}
               <p className="text-xs text-slate-400 italic">
                 {t(
-                  'Compatible with Windows 10 & 11 • Portable single-file executable',
-                  '完美支援 Windows 10 & 11 • 綠色免安裝單一執行檔',
-                  '完美支援 Windows 10 & 11 • 绿色免安装单一执行档'
+                  'Compatible with Windows 10/11 & macOS (v1.3.1) • Standalone desktop application',
+                  '完美支援 Windows 10/11 & macOS (v1.3.1) • 綠色免安裝獨立執行檔',
+                  '完美支持 Windows 10/11 & macOS (v1.3.1) • 绿色免安装独立执行档'
                 )}
               </p>
             </div>
@@ -185,7 +178,7 @@ export default function App() {
                     </span>
                   </div>
                   <span className="text-[10px] font-mono font-semibold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded-full border border-indigo-100">
-                    Active V1.3
+                    Active V1.3.1 (Win & Mac)
                   </span>
                 </div>
 
