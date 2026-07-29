@@ -1,4 +1,4 @@
-import { CheckCircle2, ArrowUpRight, ShieldCheck, Sparkles, AudioLines, Volume2 } from 'lucide-react';
+import { CheckCircle2, ArrowUpRight, ShieldCheck, Sparkles, AudioLines, Volume2, Monitor, Laptop, Layers, Zap } from 'lucide-react';
 import { Language } from '../types';
 
 interface PricingRoadmapProps {
@@ -7,19 +7,80 @@ interface PricingRoadmapProps {
 }
 
 export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingRoadmapProps) {
+  const t = (en: string, zh: string, hans: string) => {
+    if (currentLang === 'en') return en;
+    if (currentLang === 'hans') return hans;
+    return zh;
+  };
+
+  const pricingTiers = [
+    {
+      id: 'win-pass',
+      title: 'Windows Dual-PC Pass',
+      price: '$59',
+      badge: { en: 'Windows Dual-PC', zh: 'Windows 雙機版', hans: 'Windows 双机版' },
+      isPopular: false,
+      platformIcon: <Monitor className="w-5 h-5 text-indigo-600" />,
+      licenseText: {
+        en: 'Authorize up to 2 Windows PCs (Lifetime License)',
+        zh: '可授權 2 台 Windows 電腦（終身買斷）',
+        hans: '可授权 2 台 Windows 电脑（终身买断）'
+      },
+      desc: {
+        en: 'Perfect for Windows desktop + laptop power users.',
+        zh: '適合擁有一台桌機 + 一台筆電的 Windows 極客用戶。',
+        hans: '适合拥有一台台式机 + 一台笔记本的 Windows 极客用户。'
+      }
+    },
+    {
+      id: 'mac-pass',
+      title: 'Mac Dual-Mac Pass',
+      price: '$59',
+      badge: { en: 'Mac Dual-Mac', zh: 'Mac 雙機版', hans: 'Mac 双机版' },
+      isPopular: false,
+      platformIcon: <Laptop className="w-5 h-5 text-purple-600" />,
+      licenseText: {
+        en: 'Authorize up to 2 Mac computers (Lifetime License)',
+        zh: '可授權 2 台 Mac 電腦（終身買斷）',
+        hans: '可授权 2 台 Mac 电脑（终身买断）'
+      },
+      desc: {
+        en: 'Perfect for MacBook + iMac / Mac Studio creators.',
+        zh: '適合擁有 MacBook + iMac / Mac Studio 的 Apple 創作者。',
+        hans: '适合拥有 MacBook + iMac / Mac Studio 的 Apple 创作者。'
+      }
+    },
+    {
+      id: 'cross-pass',
+      title: 'Ultimate Cross-Platform Pass (Win + Mac)',
+      price: '$79',
+      badge: { en: '🔥 Hot Pick', zh: '🔥【熱銷推薦】', hans: '🔥【热销推荐】' },
+      isPopular: true,
+      platformIcon: <Layers className="w-5 h-5 text-indigo-500" />,
+      licenseText: {
+        en: '【Hot Pick】Simultaneously authorize 1 Windows + 1 Mac',
+        zh: '【熱銷推薦】同時擁有 1 台 Windows + 1 台 Mac 授權',
+        hans: '【热销推荐】同时拥有 1 台 Windows + 1 台 Mac 授权'
+      },
+      desc: {
+        en: 'Most popular option! Ideal for cross-platform creators needing both Win & Mac.',
+        zh: '最受歡迎！適合跨平台同時使用 Windows 桌機與 Mac 筆電的高效工作者。',
+        hans: '最受欢迎！适合跨平台同时使用 Windows 台式机与 Mac 笔记本的高效工作者。'
+      }
+    }
+  ];
+
   const pricingFeatures = {
     en: [
-      '1 Standard License key (Up to 2 PCs simultaneously)',
-      '100% standalone desktop Windows utility (Zero bloat)',
+      '100% standalone desktop Win & Mac utility (v1.3.1 - zero bloat)',
       'Unlimited transcription via your own Groq/DeepSeek API keys',
       'Trie Tree custom terminology matching engine',
-      'Sub-second transcription response speeds',
+      'Sub-second transcription & format response speeds',
       'Fail-Silent automatic clipboard backup safety',
       'Free lifetime upgrades to all v1.x future iterations',
     ],
     zh: [
-      '1 組標準授權金鑰（可同時在最多 2 台電腦上啟用）',
-      '100% 獨立的 Windows 桌面工具程式（輕量免安裝）',
+      '100% 獨立的 Win & Mac 桌面工具程式（v1.3.1 輕量免安裝）',
       '使用您自己的 Groq/DeepSeek API 金鑰，無限轉錄',
       'Trie 樹客製化自訂字彙配對引擎',
       '低於一秒的超高速轉錄與排版回應',
@@ -27,8 +88,7 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
       '未來所有 v1.x 系列版本均享永久免費升級',
     ],
     hans: [
-      '1 组标准授权金钥（可同时在最多 2 台电脑上启用）',
-      '100% 独立的 Windows 桌面工具程序（轻量免安装）',
+      '100% 独立的 Win & Mac 桌面工具程序（v1.3.1 轻量免安装）',
       '使用您自己的 Groq/DeepSeek API 密钥，无限转录',
       'Trie 树客制化自订字汇配对引擎',
       '低于一秒的超高速转录与排版回应',
@@ -38,6 +98,21 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
   };
 
   const roadmapMilestones = [
+    {
+      id: 'parallel-racing-engine',
+      icon: <Zap className="w-5 h-5 text-amber-500" />,
+      tag: { en: 'v1.4 Max Upgrade', zh: 'v1.4 滿血進化', hans: 'v1.4 满血进化' },
+      title: { 
+        en: '⚡ Parallel Racing Engine (Groq + DeepSeek + OpenAI + Gemini)', 
+        zh: '⚡ 智慧多模型全網非同步併行競速機制 (Parallel Racing Engine)', 
+        hans: '⚡ 智慧多模型全网非同步并行竞速机制 (Parallel Racing Engine)' 
+      },
+      desc: {
+        en: 'Four-way parallel racing—whichever model is fastest wins! v1.4 introduces native OpenAI & Gemini API Key integrations alongside Groq and DeepSeek. Upon dictation, background requests shoot simultaneously to all 4 models. Whichever responds first in milliseconds is adopted instantly while cancelling the other 3. Completely eliminates single API queuing or timeouts for zero-wait 0.5s dictation & polishing!',
+        zh: '四強聯動，誰快用誰！v1.4 將競速架構推向極致極限。除了現有的 Groq 與 DeepSeek，全新引進 OpenAI API Key 與 Gemini API Key 物理入駐！當您完成語音口述，系統將在背景以非同步併行架構，同時向 Groq、DeepSeek、OpenAI、Gemini 全球四個頂級 AI 大模型發射處理請求。不論哪一個模型的伺服器在毫秒間最快傳回結果，系統就瞬間採用誰，並物理取消另外三條慢速連線！徹底終結單一 API 遭遇尖峰排隊、網路波動或超時卡死的絕症，實現真正無感、零等待的 0.5 秒終極文字聽寫與拋光！',
+        hans: '四强联动，谁快用谁！v1.4 将竞速架构推向极致极限。除了现有的 Groq 与 DeepSeek，全新引进 OpenAI API Key 与 Gemini API Key 物理入住！当您完成语音口述，系统将在背景以非同步并行架构，同时向 Groq、DeepSeek、OpenAI、Gemini 全球四个顶级 AI 大模型发射处理请求。不论哪一个模型的服务器在毫秒间最快传回结果，系统就瞬间采用谁，并物理取消另外三条慢速连线！彻底终结单一 API 遭遇尖峰排队、网络波动或超时卡死的绝症，实现真正无感、零等待的 0.5 秒终极文字听写与抛光！'
+      }
+    },
     {
       id: 'voice-id',
       icon: <AudioLines className="w-5 h-5 text-indigo-600" />,
@@ -70,18 +145,12 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
         hans: '🔥 全自动游标锚定技术 (Auto-Focus Window Target)' 
       },
       desc: {
-        en: 'A revolutionary upgrade in v1.4! Completely eliminates the tedious process of manually switching windows. No matter what app you are currently in, just click and speak. Upon text polishing, InstantFlow leverages Windows APIs to perform atomic "auto-focus targeting," precisely inserting your perfect text into the original input field within 400ms. True uninterrupted flow—keeping your hands and focus exactly where they belong!',
-        zh: '1.4 版迎來革命性升級！完全顛覆傳統需要手動切換視窗的繁瑣流程。不論您在做什麼，一鍵開講，InstantFlow 結束轉錄時會透過 Windows API 進行原子級「自動流標起始點錨定」，在 400 毫秒內精準定位並將完美文字直接注入原始輸入框。真正的無縫銜接，讓您的雙手與視線永遠留在創作的核心頁面！',
-        hans: '1.4 版迎来革命性升级！完全颠覆传统需要手动切换窗口的繁琐流程。不论您在做什么，一键开讲，InstantFlow 结束转录时会通过 Windows API 进行原子级「自动游标起始点锚定」，在 400 毫秒内精准定位并将完美文字直接注入原始输入框。真正的无缝衔接，让您的双手与视线永远留在创作的核心页面！'
+        en: 'A revolutionary upgrade in v1.4! Completely eliminates the tedious process of manually switching windows. No matter what app you are currently in, just click and speak. Upon text polishing, InstantFlow leverages system APIs to perform atomic "auto-focus targeting," precisely inserting your perfect text into the original input field within 400ms.',
+        zh: '1.4 版迎來革命性升級！完全顛覆傳統手動切換視窗的繁瑣流程。不論您在做什麼，一鍵開講，InstantFlow 結束轉錄時會進行原子級「自動流標起始點錨定」，在 400 毫秒內精準定位並將完美文字直接注入原始輸入框。',
+        hans: '1.4 版迎来革命性升级！完全颠覆传统手动切换窗口的繁琐流程。不论您在做什么，一键开讲，InstantFlow 结束转录时会进行原子级「自动游标起始点锚定」，在 400 毫秒内精准定位并将完美文字直接注入原始输入框。'
       }
     }
   ];
-
-  const t = (en: string, zh: string, hans: string) => {
-    if (currentLang === 'en') return en;
-    if (currentLang === 'hans') return hans;
-    return zh;
-  };
 
   return (
     <section id="pricing-roadmap" className="py-20 bg-transparent px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -92,57 +161,114 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="inline-block px-3 py-1 rounded-full text-xs font-mono font-bold tracking-widest uppercase text-indigo-600 bg-indigo-50 border border-indigo-100">
-            {t('Lifetime Pricing & Roadmap', '終身授權與產品路線圖', '终身授权与产品路线图')}
+            {t('Lifetime Pricing & Platform Options (v1.3.1)', '終身買斷授權方案 (v1.3.1 雙平台版)', '终身买断授权方案 (v1.3.1 双平台版)')}
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight">
-            {t('Buy v1.3 today. Get v1.4 as a free upgrade.', '今天入主 v1.3，免費升級 v1.4 旗艦大改版。', '今天入主 v1.3，免费升级 v1.4 旗舰大改版。')}
+            {t('Buy v1.3.1 today. Own Win & Mac lifetime access.', '今天入主 v1.3.1，完美支援 Win & Mac 終身買斷。', '今天入主 v1.3.1，完美支持 Win & Mac 终身买断。')}
           </h2>
           <p className="text-slate-500 text-base sm:text-lg leading-relaxed">
             {t(
-              'No subscription fees, no limits, no servers in between. Just flawless local control with your own Keys.',
-              '無訂閱月費負擔、不設限制、不經手任何中間伺服器。僅憑您的個人金鑰，即可享受完美的本機自訂掌控權。',
-              '无订阅月费负担、不设限制、不经手任何中间服务器。仅凭您的个人金钥，即可享受完美的本机自订掌控权。'
+              'No subscription fees, no limits. Choose your platform pass on Gumroad and enjoy lifetime updates to all v1.x releases.',
+              '無訂閱月費負擔、不設限制。請選擇適合您的平台授權方案，一次買斷，未來所有 v1.x 版本享有永久免費升級。',
+              '无订阅月费负担、不设限制。请选择适合您的平台授权方案，一次买断，未来所有 v1.x 版本享有永久免费升级。'
             )}
           </p>
         </div>
 
-        {/* Side-by-Side Pricing Card & Roadmap Timeline */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
-          {/* Left Column: Premium Pricing Card (8 cols or 6 cols) */}
-          <div className="lg:col-span-7 flex flex-col justify-between bg-white/80 backdrop-blur-xl border-2 border-indigo-500/80 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-indigo-100 relative overflow-hidden">
-            
-            {/* Top right corner decorative ribbon */}
-            <div className="absolute top-4 right-4">
-              <span className="inline-flex items-center space-x-1 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white bg-indigo-600 shadow-sm animate-pulse">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>{t('Best Choice', '終身首選', '终身首选')}</span>
-              </span>
-            </div>
+        {/* 3 Gumroad Pass Tiers Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          {pricingTiers.map((tier) => (
+            <div
+              key={tier.id}
+              className={`flex flex-col justify-between rounded-3xl p-6 sm:p-8 transition-all duration-300 relative overflow-hidden ${
+                tier.isPopular
+                  ? 'bg-gradient-to-b from-white via-indigo-50/40 to-purple-50/60 border-2 border-indigo-500 shadow-2xl shadow-indigo-200/50 -translate-y-1'
+                  : 'bg-white/80 backdrop-blur-xl border border-slate-200 shadow-xl shadow-slate-100 hover:border-indigo-300'
+              }`}
+            >
+              {/* Top Badge */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-2 rounded-xl bg-slate-100 text-slate-700">
+                  {tier.platformIcon}
+                </div>
+                <span
+                  className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-bold tracking-wide ${
+                    tier.isPopular
+                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-200 animate-pulse'
+                      : 'bg-slate-100 text-slate-600 border border-slate-200'
+                  }`}
+                >
+                  {tier.badge[currentLang]}
+                </span>
+              </div>
 
+              {/* Title & Price */}
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-display font-extrabold text-xl text-slate-900 leading-snug">
+                    {tier.title}
+                  </h3>
+                  <p className="text-slate-500 text-xs mt-1 leading-relaxed">
+                    {tier.desc[currentLang]}
+                  </p>
+                </div>
+
+                {/* Price Display */}
+                <div className="flex items-baseline space-x-1.5 pt-2 border-t border-slate-100">
+                  <span className="font-display font-black text-4xl sm:text-5xl text-slate-900 tracking-tight">
+                    {tier.price}
+                  </span>
+                  <span className="text-slate-400 font-semibold text-xs">
+                    {t('/ lifetime pass', '/ 終身買斷', '/ 终身买断')}
+                  </span>
+                </div>
+
+                {/* Highlight text matching Gumroad options */}
+                <div className="p-3 rounded-2xl bg-slate-50 border border-slate-150 text-xs font-semibold text-slate-700 leading-relaxed">
+                  {tier.licenseText[currentLang]}
+                </div>
+              </div>
+
+              {/* Buy Action Button */}
+              <div className="pt-6 mt-6 border-t border-slate-100">
+                <a
+                  href={customStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`group flex items-center justify-center space-x-2 w-full py-3.5 rounded-2xl font-bold text-sm transition-all duration-300 transform active:scale-95 ${
+                    tier.isPopular
+                      ? 'bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-lg shadow-indigo-200'
+                      : 'bg-slate-900 hover:bg-slate-800 text-white shadow-md'
+                  }`}
+                >
+                  <span>{t(`Select on Gumroad (${tier.price})`, `前往 Gumroad 選購 (${tier.price})`, `前往 Gumroad 选购 (${tier.price})`)}</span>
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Feature Highlights & v1.4 Roadmap side-by-side */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-4">
+          
+          {/* Left Column: What's included in all passes */}
+          <div className="lg:col-span-6 flex flex-col justify-between bg-white/80 backdrop-blur-xl border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
             <div className="space-y-6">
               <div>
                 <span className="text-xs font-mono font-bold tracking-widest uppercase text-indigo-600 block mb-1">
-                  {t('INSTANTFLOW STANDARD LICENSE', 'INSTANTFLOW 標準終身授權', 'INSTANTFLOW 标准终身授权')}
+                  {t('ALL PASSES INCLUDE', '所有授權方案均包含', '所有授权方案均包含')}
                 </span>
                 <h3 className="font-display font-extrabold text-2xl text-slate-800">
-                  {t('Buy Once, Own Forever', '一次買斷，終身受用', '一次买断，终身受用')}
+                  {t('Core InstantFlow Capabilities', '核心極速體驗與完整功能', '核心极速体验与完整功能')}
                 </h3>
               </div>
 
-              {/* Price Tag */}
-              <div className="flex items-baseline space-x-2">
-                <span className="font-display font-black text-5xl sm:text-6xl text-slate-900 tracking-tight">$59</span>
-                <span className="text-slate-500 font-semibold text-sm">
-                  {t('/ one-time purchase', '/ 一次性付款', '/ 一次性付款')}
-                </span>
-              </div>
-
-              <p className="text-slate-500 text-sm leading-relaxed border-b border-slate-100 pb-6">
+              <p className="text-slate-500 text-sm leading-relaxed border-b border-slate-100 pb-4">
                 {t(
-                  'Connect directly to your own Groq/DeepSeek API endpoints. Never suffer from rising developer margin costs.',
-                  '直接對接您個人的 Groq/DeepSeek API 連線點，從此不再為開發商灌水的中間月租與轉錄次數限額發愁。',
-                  '直接对接您个人的 Groq/DeepSeek API 连线点，从此不再为开发商灌水的中间月租与转录次数限额发愁。'
+                  'Connect directly to your own Groq/DeepSeek API endpoints. Never pay unnecessary developer markups.',
+                  '直接對接您個人的 Groq/DeepSeek API 連線點，從此不再為中間月租與轉錄次數限額發愁。',
+                  '直接对接您个人的 Groq/DeepSeek API 连线点，从此不再为中间月租与转录次数限额发愁。'
                 )}
               </p>
 
@@ -157,49 +283,35 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
               </div>
             </div>
 
-            {/* Gumroad Action Button */}
-            <div className="pt-8 border-t border-slate-100 mt-8">
-              <a
-                href={customStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-center space-x-2 w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-base shadow-lg shadow-indigo-150 transition-all duration-300 transform active:scale-95"
-              >
-                <span>{t('Buy Now on Gumroad ($59)', '立即在 Gumroad 購買 ($59)', '立即在 Gumroad 购买 ($59)')}</span>
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
-              <div className="flex items-center justify-center space-x-2 mt-4 text-xs text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                <span>{t('Secured Gumroad checkout • Instant key delivery', 'Gumroad 安全交易認證 • 付款後立即發送金鑰', 'Gumroad 安全交易认证 • 付款后立即发送金钥')}</span>
-              </div>
+            <div className="pt-6 border-t border-slate-100 mt-6 flex items-center justify-center space-x-2 text-xs text-slate-400">
+              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              <span>{t('Secured Gumroad checkout • Instant key delivery', 'Gumroad 安全交易認證 • 付款後立即發送金鑰', 'Gumroad 安全交易认证 • 付款后立即发送金钥')}</span>
             </div>
-
           </div>
 
           {/* Right Column: v1.4 Roadmap Timeline */}
-          <div className="lg:col-span-5 flex flex-col justify-between bg-slate-50/70 border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-inner">
+          <div className="lg:col-span-6 flex flex-col justify-between bg-slate-50/80 border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-inner">
             <div className="space-y-6">
               <div>
                 <span className="text-xs font-mono font-bold tracking-widest uppercase text-violet-600 block mb-1">
                   {t('UPCOMING FLAGSHIP MILESTONES', '即將推出的旗艦功能', '即将推出的旗舰功能')}
                 </span>
                 <h3 className="font-display font-extrabold text-2xl text-slate-800">
-                  {t('v1.4 Roadmap', 'v1.4 產品演進藍圖', 'v1.4 产品演进蓝图')}
+                  {t('v1.4 Roadmap Upgrade', 'v1.4 產品演進藍圖', 'v1.4 产品演进蓝图')}
                 </h3>
                 <p className="text-slate-400 text-xs mt-1.5 leading-relaxed">
                   {t(
-                    'Current buyers lock in free permanent access to the following next-gen updates.',
-                    '目前購買 v1.3 的客戶將全自動獲得未來 v1.4 旗艦大更新之永久免費升級權限。',
-                    '目前购买 v1.3 的客户将全自动获得未来 v1.4 旗舰大更新之永久免费升级权限。'
+                    'Current buyers lock in free permanent access to all v1.4 flagship updates.',
+                    '目前購買 v1.3.1 的客戶將全自動獲得未來 v1.4 旗艦大更新之永久免費升級權限。',
+                    '目前购买 v1.3.1 的客户将全自动获得未来 v1.4 旗舰大更新之永久免费升级权限。'
                   )}
                 </p>
               </div>
 
               {/* Roadmap Milestones Staggered list */}
-              <div className="space-y-6 relative before:absolute before:top-2 before:bottom-2 before:left-5 before:w-0.5 before:bg-indigo-100">
+              <div className="space-y-5 relative before:absolute before:top-2 before:bottom-2 before:left-5 before:w-0.5 before:bg-indigo-100">
                 {roadmapMilestones.map((milestone) => (
                   <div key={milestone.id} className="flex items-start space-x-4 relative z-10">
-                    {/* Circle icon */}
                     <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm shrink-0">
                       {milestone.icon}
                     </div>

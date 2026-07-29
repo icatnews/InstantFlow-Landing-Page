@@ -58,9 +58,9 @@ export default function Footer({ currentLang, onNavigate, onPrivacyClick, onTerm
           </div>
           <p className="text-slate-500 text-xs sm:text-sm leading-relaxed max-w-sm">
             {t(
-              'Next-generation offline-first desktop voice input and smart formatting utility for Windows power users. Run lightning-fast with zero monthly subscriptions.',
-              '專為 Windows 高階使用者打造的原生極速語音輸入與智慧排版美化工具。利用個人金鑰直連 API，告別昂貴的月租。',
-              '专为 Windows 高阶使用者打造的原生极速语音输入与智慧排版美化工具。利用个人金钥直连 API，告别昂贵的月租。'
+              'Next-generation offline-first desktop voice input and smart formatting utility for Windows & Mac power users. Run lightning-fast with zero monthly subscriptions.',
+              '專為 Windows 與 Mac 高階使用者打造的原生極速語音輸入與智慧排版美化工具。利用個人金鑰直連 API，告別昂貴的月租。',
+              '专为 Windows 与 Mac 高阶使用者打造的原生极速语音输入与智慧排版美化工具。利用个人金钥直连 API，告别昂贵的月租。'
             )}
           </p>
           <div className="py-2">
@@ -141,7 +141,7 @@ export default function Footer({ currentLang, onNavigate, onPrivacyClick, onTerm
       {/* Deep Footer signature */}
       <div className="max-w-7xl mx-auto pt-10 mt-10 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600 font-semibold font-sans">
         <div>
-          {t('Built natively for Windows 10 & 11', '專為 Windows 10 與 11 原生深度調校', '专为 Windows 10 与 11 原生深度调校')}
+          {t('Built natively for Windows 10/11 & macOS', '專為 Windows 10/11 與 macOS 原生深度調校', '专为 Windows 10/11 与 macOS 原生深度调校')}
         </div>
         <div className="flex items-center space-x-1.5 hover:text-indigo-400 transition">
           <span>{t('Standalone, private, and secure', '離線首選 • 安全無慮', '离线首选 • 安全无虑')}</span>
