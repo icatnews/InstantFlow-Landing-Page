@@ -16,7 +16,7 @@ export default function Navbar({
   onLanguageChange,
   onNavigate,
   customStoreUrl,
-  stockFlowUrl = '/stockflow-ai',
+  stockFlowUrl = 'https://stockflow.instantflow.net',
 }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);

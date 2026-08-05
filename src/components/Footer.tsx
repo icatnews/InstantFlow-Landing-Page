@@ -92,7 +92,7 @@ export default function Footer({ currentLang, onNavigate, onPrivacyClick, onTerm
               ))}
               <li>
                 <a
-                  href="/stockflow-ai"
+                  href="https://stockflow.instantflow.net"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-1 text-emerald-400 hover:text-emerald-300 font-semibold transition"
