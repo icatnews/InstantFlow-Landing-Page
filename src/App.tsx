@@ -24,7 +24,7 @@ export default function App() {
 
   // Unified purchase URL for all languages
   const resolvedStoreUrl = 'https://novaflowlabs.gumroad.com/l/instantflow';
-  const stockFlowUrl = '/stockflow-ai';
+  const stockFlowUrl = 'https://stockflow.instantflow.net';
 
   // Force direct DOM updates to ensure absolute synchronicity for all Gumroad purchase links
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function App() {
         const currentHref = link.getAttribute('href');
         if (currentHref) {
           if (currentHref.includes('stockflow')) {
-            link.setAttribute('href', 'https://novaflowlabs.gumroad.com/l/stockflow');
+            link.setAttribute('href', 'https://stockflow.instantflow.net');
             return;
           }
           if (currentHref.includes('/affiliates')) {
