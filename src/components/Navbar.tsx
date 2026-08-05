@@ -8,6 +8,7 @@ interface NavbarProps {
   onLanguageChange: (lang: Language) => void;
   onNavigate: (sectionId: string) => void;
   customStoreUrl: string;
+  stockFlowUrl?: string;
 }
 
 export default function Navbar({
@@ -15,6 +16,7 @@ export default function Navbar({
   onLanguageChange,
   onNavigate,
   customStoreUrl,
+  stockFlowUrl = '/stockflow-ai',
 }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -120,6 +122,19 @@ export default function Navbar({
               </button>
             );
           })}
+
+          {/* StockFlow AI Cross-Product Link */}
+          <a
+            href={stockFlowUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative ml-1 px-3.5 py-1.5 rounded-full bg-[#111827] hover:bg-[#1f2937] text-white border border-slate-700/80 hover:border-emerald-400/80 shadow-sm hover:shadow-[0_0_16px_rgba(16,185,129,0.4)] transition-all duration-300 flex items-center space-x-1.5 text-xs font-bold font-sans tracking-wide transform active:scale-95 cursor-pointer"
+            title="StockFlow AI"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400/20 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
+            <span className="text-slate-100 group-hover:text-emerald-300 transition-colors">StockFlow AI</span>
+            <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+          </a>
         </nav>
 
         {/* Language & CTA Controls */}
@@ -231,6 +246,18 @@ export default function Navbar({
                 {item.label[currentLang]}
               </button>
             ))}
+            <a
+              href={stockFlowUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-between px-4 py-3 rounded-xl font-sans text-base font-bold bg-[#111827] text-white border border-slate-800 hover:border-emerald-400/60 shadow-md hover:shadow-[0_0_15px_rgba(16,185,129,0.3)] transition"
+            >
+              <div className="flex items-center space-x-2">
+                <Sparkles className="w-4 h-4 text-emerald-400 fill-emerald-400/20" />
+                <span className="text-emerald-300">StockFlow AI</span>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-emerald-400" />
+            </a>
           </nav>
           <div className="pt-4 border-t border-slate-100 space-y-4">
             <div className="flex justify-center py-1">
