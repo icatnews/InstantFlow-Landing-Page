@@ -3,7 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
+    <title>InstantFlow AI - Voice Typing & Formatting Utility</title>
+    <script>
+      (function() {
+        if (typeof window !== 'undefined') {
+          if (typeof window.global === 'undefined') {
+            window.global = window;
+          }
+          try {
+            var desc = Object.getOwnPropertyDescriptor(window, 'fetch') || Object.getOwnPropertyDescriptor(Window.prototype, 'fetch');
+            if (desc && !desc.set) {
+              var currentFetch = window.fetch ? window.fetch.bind(window) : undefined;
+              Object.defineProperty(window, 'fetch', {
+                get: function() { return currentFetch; },
+                set: function(fn) { currentFetch = fn; },
+                configurable: true,
+                enumerable: true
+              });
+            }
+          } catch (e) {
+            // ignore
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
