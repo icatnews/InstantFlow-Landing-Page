@@ -24,6 +24,7 @@ export default function App() {
 
   // Unified purchase URL for all languages
   const resolvedStoreUrl = 'https://novaflowlabs.gumroad.com/l/instantflow';
+  const stockFlowUrl = '/stockflow-ai';
 
   // Force direct DOM updates to ensure absolute synchronicity for all Gumroad purchase links
   useEffect(() => {
@@ -33,12 +34,15 @@ export default function App() {
       const gumroadLinks = document.querySelectorAll('a[href*="gumroad.com"], .buy-btn, a.buy-btn');
       gumroadLinks.forEach((link) => {
         const currentHref = link.getAttribute('href');
-        if (currentHref && (currentHref.includes('/affiliates') || currentHref.includes('stockflow'))) {
-          if (currentHref.includes('/affiliates')) {
-            // Keep the affiliate link intact
-            link.setAttribute('href', 'https://novaflowlabs.gumroad.com/affiliates');
+        if (currentHref) {
+          if (currentHref.includes('stockflow')) {
+            link.setAttribute('href', 'https://novaflowlabs.gumroad.com/l/stockflow');
+            return;
           }
-          return;
+          if (currentHref.includes('/affiliates')) {
+            link.setAttribute('href', 'https://novaflowlabs.gumroad.com/affiliates');
+            return;
+          }
         }
         link.setAttribute('href', targetUrl);
       });
@@ -88,7 +92,7 @@ export default function App() {
         onLanguageChange={handleLanguageChange}
         onNavigate={handleNavigate}
         customStoreUrl={resolvedStoreUrl}
-        stockFlowUrl="/stockflow-ai"
+        stockFlowUrl={stockFlowUrl}
       />
 
       <main className="relative z-10 pt-28">
