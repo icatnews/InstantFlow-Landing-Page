@@ -1,0 +1,19 @@
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/stockflow-ai",
+      "destination": "https://stockflow-ai-landing.vercel.app/index.html"
+    },
+    {
+      "source": "/stockflow-ai/:path*",
+      "destination": "https://stockflow-ai-landing.vercel.app/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
