@@ -1,4 +1,5 @@
-import { CheckCircle2, ArrowUpRight, ShieldCheck, Sparkles, AudioLines, Volume2, Monitor, Laptop, Layers, Zap } from 'lucide-react';
+import { CheckCircle2, ArrowUpRight, ShieldCheck, Sparkles, AudioLines, Volume2, Monitor, Laptop, Layers, Zap, BookOpen, Smile, Target } from 'lucide-react';
+import React from 'react';
 import { Language } from '../types';
 
 interface PricingRoadmapProps {
@@ -101,53 +102,92 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
     {
       id: 'parallel-racing-engine',
       icon: <Zap className="w-5 h-5 text-amber-500" />,
-      tag: { en: 'v1.4 Max Upgrade', zh: 'v1.4 滿血進化', hans: 'v1.4 满血进化' },
+      tag: { en: 'v1.4 High Priority', zh: 'v1.4 高優先', hans: 'v1.4 高优先' },
+      tagColor: 'text-amber-700 bg-amber-50 border-amber-200',
       title: { 
-        en: '⚡ Parallel Racing Engine (Groq + DeepSeek + OpenAI + Gemini)', 
-        zh: '⚡ 智慧多模型全網非同步併行競速機制 (Parallel Racing Engine)', 
-        hans: '⚡ 智慧多模型全网非同步并行竞速机制 (Parallel Racing Engine)' 
+        en: '⚡ Parallel Racing Engine', 
+        zh: '⚡ 智慧多模型並行多引擎 (Parallel Racing Engine)', 
+        hans: '⚡ 智慧多模型并行多引擎 (Parallel Racing Engine)' 
       },
       desc: {
-        en: 'Four-way parallel racing—whichever model is fastest wins! v1.4 introduces native OpenAI & Gemini API Key integrations alongside Groq and DeepSeek. Upon dictation, background requests shoot simultaneously to all 4 models. Whichever responds first in milliseconds is adopted instantly while cancelling the other 3. Completely eliminates single API queuing or timeouts for zero-wait 0.5s dictation & polishing!',
-        zh: '四強聯動，誰快用誰！v1.4 將競速架構推向極致極限。除了現有的 Groq 與 DeepSeek，全新引進 OpenAI API Key 與 Gemini API Key 物理入駐！當您完成語音口述，系統將在背景以非同步併行架構，同時向 Groq、DeepSeek、OpenAI、Gemini 全球四個頂級 AI 大模型發射處理請求。不論哪一個模型的伺服器在毫秒間最快傳回結果，系統就瞬間採用誰，並物理取消另外三條慢速連線！徹底終結單一 API 遭遇尖峰排隊、網路波動或超時卡死的絕症，實現真正無感、零等待的 0.5 秒終極文字聽寫與拋光！',
-        hans: '四强联动，谁快用谁！v1.4 将竞速架构推向极致极限。除了现有的 Groq 与 DeepSeek，全新引进 OpenAI API Key 与 Gemini API Key 物理入住！当您完成语音口述，系统将在背景以非同步并行架构，同时向 Groq、DeepSeek、OpenAI、Gemini 全球四个顶级 AI 大模型发射处理请求。不论哪一个模型的服务器在毫秒间最快传回结果，系统就瞬间采用谁，并物理取消另外三条慢速连线！彻底终结单一 API 遭遇尖峰排队、网络波动或超时卡死的绝症，实现真正无感、零等待的 0.5 秒终极文字听写与抛光！'
+        en: 'Quadruple acceleration with extreme speed leap! V1.4 introduces an ultra-fast dual-model parallel mechanism supporting Groq & DeepSeek (with OpenAI / Gemini interfaces reserved). Low-latency asynchronous racing cuts response times down to the blink of an eye!',
+        zh: '四重加速，速度飛躍！V1.4 將提供極致的雙模型並行機制，支援 Groq 與 DeepSeek（並預留 OpenAI / Gemini 接口）。透過底層非同步賽馬機制，大幅度降低等待延遲，讓語音輸入到文字拋光在眨眼間完成！',
+        hans: '四重加速，速度飞跃！V1.4 将提供极致的双模型并行机制，支持 Groq 与 DeepSeek（并预留 OpenAI / Gemini 接口）。透过底层非同步赛马机制，大幅度降低等待延迟，让语音输入到文字抛光在眨眼间完成！'
       }
     },
     {
-      id: 'voice-id',
-      icon: <AudioLines className="w-5 h-5 text-indigo-600" />,
-      tag: { en: 'Scheduled v1.4', zh: '規劃於 v1.4', hans: '规划于 v1.4' },
-      title: { en: 'Voice ID Verification', zh: '聲紋特徵身分驗證', hans: '声纹特征身份验证' },
-      desc: {
-        en: 'v1.4 will introduce cutting-edge audio feature recognition to securely memorize and lock onto the owner\'s unique voice profile.',
-        zh: 'v1.4 將引入前沿聲紋特徵識別技術，深度學習並僅鎖定軟體所有者的獨特聲音訊號。',
-        hans: 'v1.4 将引入前沿声纹特征识别技术，深度学习并仅锁定软件所有者的独特声音信号。'
-      }
-    },
-    {
-      id: 'noise-isolation',
-      icon: <Volume2 className="w-5 h-5 text-violet-600" />,
-      tag: { en: 'Scheduled v1.4', zh: '規劃於 v1.4', hans: '规划于 v1.4' },
-      title: { en: 'Total Background Noise Isolation', zh: '極致背景人聲與噪音過濾', hans: '极致背景人声与噪音过滤' },
-      desc: {
-        en: 'Whether in a busy cafe, high-speed train, or next to chatting colleagues, the engine filters out non-owners, keeping inputs 100% focused.',
-        zh: '不論是在嘈雜的咖啡廳、高速行駛的高鐵、或是身處大聲聊天的同事身旁，過濾引擎會自動排除非擁有者的雜音人聲。',
-        hans: '不论是在嘈杂的咖啡厅、高速行驶的高铁、或是身处大声聊天的同事身旁，过滤引擎会自动排除非拥有者的杂音人声。'
-      }
-    },
-    {
-      id: 'dictation-engine',
-      icon: <Sparkles className="w-5 h-5 text-sky-500" />,
-      tag: { en: 'Scheduled v1.4', zh: '規劃於 v1.4', hans: '规划于 v1.4' },
+      id: 'obsidian-integration',
+      icon: <BookOpen className="w-5 h-5 text-purple-600" />,
+      tag: { en: 'v1.4 Live', zh: 'v1.4 已上線', hans: 'v1.4 已上线' },
+      tagColor: 'text-emerald-700 bg-emerald-50 border-emerald-200',
       title: { 
-        en: '🔥 Auto-Focus Window Targeting Technology', 
-        zh: '🔥 全自動流標錨定技術 (Auto-Focus Window Target)', 
-        hans: '🔥 全自动游标锚定技术 (Auto-Focus Window Target)' 
+        en: 'Obsidian Deep Knowledge Base Integration', 
+        zh: 'Obsidian 知識庫深度物理聯動', 
+        hans: 'Obsidian 知识库深度物理联动' 
       },
       desc: {
-        en: 'A revolutionary upgrade in v1.4! Completely eliminates the tedious process of manually switching windows. No matter what app you are currently in, just click and speak. Upon text polishing, InstantFlow leverages system APIs to perform atomic "auto-focus targeting," precisely inserting your perfect text into the original input field within 400ms.',
-        zh: '1.4 版迎來革命性升級！完全顛覆傳統手動切換視窗的繁瑣流程。不論您在做什麼，一鍵開講，InstantFlow 結束轉錄時會進行原子級「自動流標起始點錨定」，在 400 毫秒內精準定位並將完美文字直接注入原始輸入框。',
-        hans: '1.4 版迎来革命性升级！完全颠覆传统手动切换窗口的繁琐流程。不论您在做什么，一键开讲，InstantFlow 结束转录时会进行原子级「自动游标起始点锚定」，在 400 毫秒内精准定位并将完美文字直接注入原始输入框。'
+        en: (
+          <div className="space-y-1.5">
+            <p>Built-in physical file writing for your second brain! Instant switching across three professional note modes:</p>
+            <ul className="space-y-1 pl-1 text-[11px] sm:text-xs">
+              <li>• <span className="font-semibold text-slate-700">Fleeting Notes</span>: Auto timestamped and appended in seconds to <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">DailyNotes/YYYY-MM-DD.md</code>.</li>
+              <li>• <span className="font-semibold text-slate-700">To-Do List</span>: Auto-structured into standard Markdown <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">- [ ]</code> checkboxes in <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">ToDo.md</code>.</li>
+              <li>• <span className="font-semibold text-slate-700">Bi-directional Inspiration</span>: Stage 2 AI wraps technical keywords into <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">[[wikilinks]]</code> appended to <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">Inbox.md</code>, illuminating your knowledge graph!</li>
+            </ul>
+          </div>
+        ),
+        zh: (
+          <div className="space-y-1.5">
+            <p>為第二大腦打造的後台物理寫檔整合！支援一鍵切換三大專業筆記模式：</p>
+            <ul className="space-y-1 pl-1 text-[11px] sm:text-xs">
+              <li>• <span className="font-semibold text-slate-700">閃念日記</span>：自動打上即時時間戳，秒級追加至 <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">DailyNotes/YYYY-MM-DD.md</code>。</li>
+              <li>• <span className="font-semibold text-slate-700">待辦清單</span>：自動整理語意並生成標準 Markdown <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">- [ ]</code> 待辦核取方塊至 <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">ToDo.md</code>。</li>
+              <li>• <span className="font-semibold text-slate-700">雙向靈感</span>：Stage 2 AI 自動識別專業技術名詞，強制封裝為 <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">[[雙向鏈接]]</code> 追加至 <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">Inbox.md</code>，即時點亮 Obsidian 知識圖譜！</li>
+            </ul>
+          </div>
+        ),
+        hans: (
+          <div className="space-y-1.5">
+            <p>为第二大脑打造的后台物理写档整合！支持一键切换三大专业笔记模式：</p>
+            <ul className="space-y-1 pl-1 text-[11px] sm:text-xs">
+              <li>• <span className="font-semibold text-slate-700">闪念日记</span>：自动打上即时时间戳，秒级追加至 <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">DailyNotes/YYYY-MM-DD.md</code>。</li>
+              <li>• <span className="font-semibold text-slate-700">待办清单</span>：自动整理语意并生成标准 Markdown <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">- [ ]</code> 待办复选框至 <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">ToDo.md</code>。</li>
+              <li>• <span className="font-semibold text-slate-700">双向灵感</span>：Stage 2 AI 自动识别专业技术名词，强制封装为 <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">[[双向链接]]</code> 追加至 <code className="bg-slate-200/70 px-1 py-0.5 rounded text-[10px] font-mono">Inbox.md</code>，即时点亮 Obsidian 知识图谱！</li>
+            </ul>
+          </div>
+        )
+      }
+    },
+    {
+      id: 'social-emoji-polish',
+      icon: <Smile className="w-5 h-5 text-pink-500" />,
+      tag: { en: 'v1.4 Recommended', zh: 'v1.4 推薦', hans: 'v1.4 推荐' },
+      tagColor: 'text-pink-700 bg-pink-50 border-pink-200',
+      title: { 
+        en: 'Social & Emoji Polish Mode', 
+        zh: '社群社交潤飾模式 (Social & Emoji Polish)', 
+        hans: '社群社交润饰模式 (Social & Emoji Polish)' 
+      },
+      desc: {
+        en: 'Specially crafted for social chats and posts! Supports custom Emoji density tuning, automatically transforming stiff spoken words into friendly, expressive, and highly engaging social copy.',
+        zh: '專為社群聊天與貼文設計！支援自訂 Emoji 密度調節，自動將生硬口語轉換為親切、生動且具備高互動感的社交風格文案。',
+        hans: '专为社群聊天与贴文设计！支持自订 Emoji 密度调节，自动将生硬口语转换为亲切、生动且具备高互动感的社交风格文案。'
+      }
+    },
+    {
+      id: 'auto-focus-window-target',
+      icon: <Target className="w-5 h-5 text-sky-500" />,
+      tag: { en: 'v1.4', zh: 'v1.4', hans: 'v1.4' },
+      tagColor: 'text-violet-700 bg-violet-50 border-violet-200',
+      title: { 
+        en: 'Auto-Focus Window Target Injection', 
+        zh: '全自動焦點鎖定注入技術 (Auto-Focus Window Target)', 
+        hans: '全自动焦点锁定注入技术 (Auto-Focus Window Target)' 
+      },
+      desc: {
+        en: '1.4 brings the ultimate smooth experience! Completely eliminates manual cursor switching or clicking to focus. InstantFlow automatically locks onto the target active window upon recording and injects polished text precisely at the cursor within 400ms.',
+        zh: '1.4 版帶來極致操作體驗！完全無需手動切換游標或點擊聚焦，不論你在進行何種操作，InstantFlow 都能在錄音啟動瞬間自動鎖定目標視窗，並在 400 毫秒內將文字精準注入游標位置。',
+        hans: '1.4 版带来极致操作体验！完全无需手动切换游标或点击聚焦，不论你在进行何种操作，InstantFlow 都能在录音启动瞬间自动锁定目标窗口，并在 400 毫秒内将文字精准注入游标位置。'
       }
     }
   ];
@@ -321,13 +361,13 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
                         <h4 className="font-display font-extrabold text-sm text-slate-800">
                           {milestone.title[currentLang]}
                         </h4>
-                        <span className="text-[9px] font-mono font-bold text-violet-600 bg-violet-50 px-2 py-0.5 rounded-full border border-violet-100">
+                        <span className={`text-[9px] font-mono font-bold px-2 py-0.5 rounded-full border ${milestone.tagColor || 'text-violet-600 bg-violet-50 border-violet-100'}`}>
                           {milestone.tag[currentLang]}
                         </span>
                       </div>
-                      <p className="text-slate-500 text-xs leading-relaxed">
+                      <div className="text-slate-500 text-xs leading-relaxed">
                         {milestone.desc[currentLang]}
-                      </p>
+                      </div>
                     </div>
                   </div>
                 ))}
