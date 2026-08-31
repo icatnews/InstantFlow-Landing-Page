@@ -148,14 +148,19 @@ export default function ObsidianShowcase({ currentLang }: ObsidianShowcaseProps)
   const tabData = {
     todo: {
       id: 'todo',
-      fileName: 'Vault / ToDo.md',
+      fileName: {
+        en: 'Vault / ToDo.md',
+        zh: 'Vault / ToDo.md',
+        hans: 'Vault / ToDo.md'
+      },
       tag: { en: 'Auto Classification · Checkboxes', zh: '自動分類 · 結構化 Checkbox', hans: '自动分类 · 结构化 Checkbox' },
       voiceText: {
         zh: '「明天下午 2 點和老張開會確認圖庫流的排程，順便去全聯買兩瓶鮮奶和洗碗精，對了還要記得繳清本月份伺服器主機費用 1,450 元，還有在官網新增用戶見證展示區塊。」',
         hans: '“明天下午 2 点和老张开会确认图库流的排程，顺便去全联买两瓶鲜奶和洗碗精，对了还要记得缴清本月份服务器主机费用 1,450 元，还有在官网新增用户见证展示区块。”',
         en: '"Meet with Lao Zhang at 2 PM tomorrow to confirm StockFlow schedule, buy 2 bottles of fresh milk and dish soap, pay this month\'s server hosting fee of $1,450, and add a testimonials section on official site."'
       },
-      rawMarkdown: `# 💼 工作
+      rawMarkdown: {
+        zh: `# 💼 工作
 - [ ] 明天 14:00 與老張開會確認圖庫流排程
 
 # 🛒 購物
@@ -166,11 +171,34 @@ export default function ObsidianShowcase({ currentLang }: ObsidianShowcaseProps)
 
 # 💡 靈感
 - [ ] 官網新增用戶見證展示區塊`,
+        hans: `# 💼 工作
+- [ ] 明天 14:00 与老张开会确认图库流排程
+
+# 🛒 购物
+- [ ] 全联：两瓶鲜奶、洗碗精
+
+# 💳 付款
+- [ ] 缴清本月份服务器主机费用 $1,450 元
+
+# 💡 灵感
+- [ ] 官网新增用户见证展示区块`,
+        en: `# 💼 Work
+- [ ] Tomorrow 14:00 Meet with Lao Zhang to confirm StockFlow schedule
+
+# 🛒 Shopping
+- [ ] Grocery: 2 bottles of fresh milk, dish soap
+
+# 💳 Payment
+- [ ] Pay this month's server hosting fee $1,450
+
+# 💡 Ideas
+- [ ] Add customer testimonials showcase section to website`
+      },
       renderedContent: (
         <div className="space-y-4 font-sans text-xs sm:text-sm animate-in fade-in slide-in-from-bottom-2 duration-500">
           <div className="space-y-1.5">
             <h3 className="font-bold text-indigo-300 flex items-center space-x-1.5 text-xs sm:text-sm tracking-wide">
-              <span># 💼 工作</span>
+              <span>{t('# 💼 Work', '# 💼 工作', '# 💼 工作')}</span>
             </h3>
             <div 
               onClick={() => toggleTodo('t1')}
@@ -184,13 +212,19 @@ export default function ObsidianShowcase({ currentLang }: ObsidianShowcaseProps)
                 onChange={() => {}} 
                 className="mt-0.5 rounded border-slate-700 text-purple-500 focus:ring-0 cursor-pointer accent-purple-500"
               />
-              <span>明天 14:00 與老張開會確認圖庫流排程</span>
+              <span>
+                {t(
+                  'Tomorrow 14:00 Meet with Lao Zhang to confirm StockFlow schedule',
+                  '明天 14:00 與老張開會確認圖庫流排程',
+                  '明天 14:00 与老张开会确认图库流排程'
+                )}
+              </span>
             </div>
           </div>
 
           <div className="space-y-1.5">
             <h3 className="font-bold text-amber-300 flex items-center space-x-1.5 text-xs sm:text-sm tracking-wide">
-              <span># 🛒 購物</span>
+              <span>{t('# 🛒 Shopping', '# 🛒 購物', '# 🛒 购物')}</span>
             </h3>
             <div 
               onClick={() => toggleTodo('t2')}
@@ -204,13 +238,19 @@ export default function ObsidianShowcase({ currentLang }: ObsidianShowcaseProps)
                 onChange={() => {}} 
                 className="mt-0.5 rounded border-slate-700 text-purple-500 focus:ring-0 cursor-pointer accent-purple-500"
               />
-              <span>全聯：兩瓶鮮奶、洗碗精</span>
+              <span>
+                {t(
+                  'Grocery: 2 bottles of fresh milk, dish soap',
+                  '全聯：兩瓶鮮奶、洗碗精',
+                  '全联：两瓶鲜奶、洗碗精'
+                )}
+              </span>
             </div>
           </div>
 
           <div className="space-y-1.5">
             <h3 className="font-bold text-rose-300 flex items-center space-x-1.5 text-xs sm:text-sm tracking-wide">
-              <span># 💳 付款</span>
+              <span>{t('# 💳 Payment', '# 💳 付款', '# 💳 付款')}</span>
             </h3>
             <div 
               onClick={() => toggleTodo('t3')}
@@ -224,13 +264,19 @@ export default function ObsidianShowcase({ currentLang }: ObsidianShowcaseProps)
                 onChange={() => {}} 
                 className="mt-0.5 rounded border-slate-700 text-purple-500 focus:ring-0 cursor-pointer accent-purple-500"
               />
-              <span>繳清本月份伺服器主機費用 $1,450 元</span>
+              <span>
+                {t(
+                  "Pay this month's server hosting fee $1,450",
+                  '繳清本月份伺服器主機費用 $1,450 元',
+                  '缴清本月份服务器主机费用 $1,450 元'
+                )}
+              </span>
             </div>
           </div>
 
           <div className="space-y-1.5">
             <h3 className="font-bold text-emerald-300 flex items-center space-x-1.5 text-xs sm:text-sm tracking-wide">
-              <span># 💡 靈感</span>
+              <span>{t('# 💡 Ideas', '# 💡 靈感', '# 💡 灵感')}</span>
             </h3>
             <div 
               onClick={() => toggleTodo('t4')}
@@ -244,7 +290,13 @@ export default function ObsidianShowcase({ currentLang }: ObsidianShowcaseProps)
                 onChange={() => {}} 
                 className="mt-0.5 rounded border-slate-700 text-purple-500 focus:ring-0 cursor-pointer accent-purple-500"
               />
-              <span>官網新增用戶見證展示區塊</span>
+              <span>
+                {t(
+                  'Add customer testimonials showcase section to website',
+                  '官網新增用戶見證展示區塊',
+                  '官网新增用户见证展示区块'
+                )}
+              </span>
             </div>
           </div>
         </div>
@@ -252,14 +304,19 @@ export default function ObsidianShowcase({ currentLang }: ObsidianShowcaseProps)
     },
     daily: {
       id: 'daily',
-      fileName: 'DailyNotes / 2026 / 08 / 2026-08-31_週一.md',
+      fileName: {
+        en: 'DailyNotes / 2026 / 08 / 2026-08-31_Mon.md',
+        zh: 'DailyNotes / 2026 / 08 / 2026-08-31_週一.md',
+        hans: 'DailyNotes / 2026 / 08 / 2026-08-31_周一.md'
+      },
       tag: { en: 'Year/Month Hierarchy · Timestamp', zh: '年月結構分層 · 時間戳流水帳', hans: '年月结构分层 · 时间戳流水账' },
       voiceText: {
         zh: '「今天天氣很舒服，早晨開發效率極高，順利解決了 Windows 上的焦點貼上延遲問題，感覺 InstantFlow 1.4 的版本越來越好用了。」',
         hans: '“今天天气很舒服，早晨开发效率极高，顺利解决了 Windows 上的焦点贴上延迟问题，感觉 InstantFlow 1.4 的版本越来越好用了。”',
         en: '"The weather is so comfortable today, morning dev productivity was super high. Fixed the Windows focus paste latency issue, InstantFlow 1.4 is getting better and better."'
       },
-      rawMarkdown: `---
+      rawMarkdown: {
+        zh: `---
 date: 2026-08-31
 weekday: 週一
 weather: 舒適 🌤️
@@ -270,6 +327,29 @@ tags: [閃念日記, 開發, 發布]
 # 2026-08-31_週一
 
 - 19:52:54 今天天氣很舒服，早晨開發效率極高，順利解決了 Windows 上的焦點貼上延遲問題，感覺 InstantFlow 1.4 的版本越來越好用了。`,
+        hans: `---
+date: 2026-08-31
+weekday: 周一
+weather: 舒适 🌤️
+mood: 专注充实 🎯
+tags: [闪念日记, 开发, 发布]
+---
+
+# 2026-08-31_周一
+
+- 19:52:54 今天天气很舒服，早晨开发效率极高，顺利解决了 Windows 上的焦点贴上延迟问题，感觉 InstantFlow 1.4 的版本越来越好用了。`,
+        en: `---
+date: 2026-08-31
+weekday: Mon
+weather: Pleasant 🌤️
+mood: Focused & Productive 🎯
+tags: [DailyNotes, Dev, Release]
+---
+
+# 2026-08-31_Mon
+
+- 19:52:54 The weather is so comfortable today, morning dev productivity was super high. Fixed the Windows focus paste latency issue, InstantFlow 1.4 is getting better and better.`
+      },
       renderedContent: (
         <div className="space-y-4 font-sans text-xs sm:text-sm animate-in fade-in slide-in-from-bottom-2 duration-500">
           {/* Obsidian Properties Box */}
@@ -285,19 +365,21 @@ tags: [閃念日記, 開發, 發布]
               </div>
               <div className="bg-slate-950/70 p-2 rounded-lg border border-slate-800/80">
                 <span className="text-slate-500 text-[10px] block font-mono">weekday</span>
-                <span className="text-indigo-300 font-semibold">週一</span>
+                <span className="text-indigo-300 font-semibold">{t('Mon', '週一', '周一')}</span>
               </div>
               <div className="bg-slate-950/70 p-2 rounded-lg border border-slate-800/80">
                 <span className="text-slate-500 text-[10px] block font-mono">weather</span>
-                <span className="text-amber-300 font-semibold">舒適 🌤️</span>
+                <span className="text-amber-300 font-semibold">{t('Pleasant 🌤️', '舒適 🌤️', '舒适 🌤️')}</span>
               </div>
               <div className="bg-slate-950/70 p-2 rounded-lg border border-slate-800/80">
                 <span className="text-slate-500 text-[10px] block font-mono">mood</span>
-                <span className="text-purple-300 font-semibold">專注充實 🎯</span>
+                <span className="text-purple-300 font-semibold">{t('Focused 🎯', '專注充實 🎯', '专注充实 🎯')}</span>
               </div>
               <div className="bg-slate-950/70 p-2 rounded-lg border border-slate-800/80 col-span-2 sm:col-span-1">
                 <span className="text-slate-500 text-[10px] block font-mono">tags</span>
-                <span className="text-emerald-300 font-semibold font-mono text-[11px]">[閃念日記, 開發, 發布]</span>
+                <span className="text-emerald-300 font-semibold font-mono text-[11px]">
+                  {t('[DailyNotes, Dev, Release]', '[閃念日記, 開發, 發布]', '[闪念日记, 开发, 发布]')}
+                </span>
               </div>
             </div>
           </div>
@@ -305,13 +387,17 @@ tags: [閃念日記, 開發, 發布]
           {/* Daily Note Content with Standard Header and Timestamp */}
           <div className="space-y-2.5 pt-1">
             <h2 className="text-sm sm:text-base font-bold text-white tracking-wide border-b border-slate-800/80 pb-1.5">
-              # 2026-08-31_週一
+              {t('# 2026-08-31_Mon', '# 2026-08-31_週一', '# 2026-08-31_周一')}
             </h2>
             <p className="text-slate-200 leading-relaxed pl-1">
               <span className="font-mono text-purple-300 font-bold mr-2 text-xs bg-purple-950/80 px-2 py-0.5 rounded border border-purple-800/40">
                 19:52:54
               </span>
-              今天天氣很舒服，早晨開發效率極高，順利解決了 Windows 上的焦點貼上延遲問題，感覺 InstantFlow 1.4 的版本越來越好用了。
+              {t(
+                'The weather is so comfortable today, morning dev productivity was super high. Fixed the Windows focus paste latency issue, InstantFlow 1.4 is getting better and better.',
+                '今天天氣很舒服，早晨開發效率極高，順利解決了 Windows 上的焦點貼上延遲問題，感覺 InstantFlow 1.4 的版本越來越好用了。',
+                '今天天气很舒服，早晨开发效率极高，顺利解决了 Windows 上的焦点贴上延迟问题，感觉 InstantFlow 1.4 的版本越来越好用了。'
+              )}
             </p>
           </div>
         </div>
@@ -319,16 +405,28 @@ tags: [閃念日記, 開發, 發布]
     },
     inbox: {
       id: 'inbox',
-      fileName: 'Vault / Inbox.md',
+      fileName: {
+        en: 'Vault / Inbox.md',
+        zh: 'Vault / Inbox.md',
+        hans: 'Vault / Inbox.md'
+      },
       tag: { en: 'Entity Extraction · [[Wikilinks]]', zh: '自動實體識別 · [[雙向鏈接]]', hans: '自动实体识别 · [[双向链接]]' },
       voiceText: {
         zh: '「我們可以在 Gumroad 上針對 InstantFlow 1.4 版本推出調價策略，讓已購買老客戶免費升級，同時把圖庫流的自動標籤算法整合進知識庫工作流，吸引第二大腦重度用戶。」',
         hans: '“我们可以在 Gumroad 上针对 InstantFlow 1.4 版本推出调价策略，让已购买老客户免费升级，同时把图库流的自动标签算法整合进知识库工作流，吸引第二大脑重度用户。”',
         en: '"We can introduce a price adjustment on Gumroad for InstantFlow 1.4, giving existing buyers free upgrades, while integrating StockFlow\'s auto-tagging algorithm into the knowledge base workflow to attract power second brain users."'
       },
-      rawMarkdown: `# Inbox
+      rawMarkdown: {
+        zh: `# Inbox
 
 - 20:15:32 我們可以在 [[Gumroad]] 上針對 [[InstantFlow]] 1.4 版本推出調價策略，讓已購買老客戶免費升級，同時把 [[圖庫流]] 的自動標籤算法整合進知識庫工作流，吸引第二大腦重度用戶。`,
+        hans: `# Inbox
+
+- 20:15:32 我们可以在 [[Gumroad]] 上针对 [[InstantFlow]] 1.4 版本推出调价策略，让已购买老客户免费升级，同时把 [[图库流]] 的自动标签算法整合进知识库工作流，吸引第二大脑重度用户。`,
+        en: `# Inbox
+
+- 20:15:32 We can introduce a price adjustment on [[Gumroad]] for [[InstantFlow]] 1.4, giving existing buyers free upgrades, while integrating [[StockFlow]]'s auto-tagging algorithm into the knowledge base workflow to attract power second brain users.`
+      },
       renderedContent: (
         <div className="space-y-4 font-sans text-xs sm:text-sm animate-in fade-in slide-in-from-bottom-2 duration-500">
           <div className="space-y-2.5">
@@ -340,19 +438,55 @@ tags: [閃念日記, 開發, 發布]
               <span className="font-mono text-purple-300 font-bold mr-2 text-xs bg-purple-950/80 px-2 py-0.5 rounded border border-purple-800/40">
                 20:15:32
               </span>
-              我們可以在{' '}
-              <span className="inline-block px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40 font-semibold font-mono text-xs hover:bg-purple-500/30 transition cursor-pointer">
-                [[Gumroad]]
-              </span>{' '}
-              上針對{' '}
-              <span className="inline-block px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40 font-semibold font-mono text-xs hover:bg-purple-500/30 transition cursor-pointer">
-                [[InstantFlow]]
-              </span>{' '}
-              1.4 版本推出調價策略，讓已購買老客戶免費升級，同時把{' '}
-              <span className="inline-block px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-semibold font-mono text-xs hover:bg-emerald-500/30 transition cursor-pointer">
-                [[圖庫流]]
-              </span>{' '}
-              的自動標籤算法整合進知識庫工作流，吸引第二大腦重度用戶。
+              {currentLang === 'en' ? (
+                <>
+                  We can introduce a price adjustment on{' '}
+                  <span className="inline-block px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40 font-semibold font-mono text-xs hover:bg-purple-500/30 transition cursor-pointer">
+                    [[Gumroad]]
+                  </span>{' '}
+                  for{' '}
+                  <span className="inline-block px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40 font-semibold font-mono text-xs hover:bg-purple-500/30 transition cursor-pointer">
+                    [[InstantFlow]]
+                  </span>{' '}
+                  1.4, giving existing buyers free upgrades, while integrating{' '}
+                  <span className="inline-block px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-semibold font-mono text-xs hover:bg-emerald-500/30 transition cursor-pointer">
+                    [[StockFlow]]
+                  </span>
+                  's auto-tagging algorithm into the knowledge base workflow to attract power second brain users.
+                </>
+              ) : currentLang === 'hans' ? (
+                <>
+                  我们可以在{' '}
+                  <span className="inline-block px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40 font-semibold font-mono text-xs hover:bg-purple-500/30 transition cursor-pointer">
+                    [[Gumroad]]
+                  </span>{' '}
+                  上针对{' '}
+                  <span className="inline-block px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40 font-semibold font-mono text-xs hover:bg-purple-500/30 transition cursor-pointer">
+                    [[InstantFlow]]
+                  </span>{' '}
+                  1.4 版本推出调价策略，让已购买老客户免费升级，同时把{' '}
+                  <span className="inline-block px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-semibold font-mono text-xs hover:bg-emerald-500/30 transition cursor-pointer">
+                    [[图库流]]
+                  </span>{' '}
+                  的自动标签算法整合进知识库工作流，吸引第二大脑重度用户。
+                </>
+              ) : (
+                <>
+                  我們可以在{' '}
+                  <span className="inline-block px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40 font-semibold font-mono text-xs hover:bg-purple-500/30 transition cursor-pointer">
+                    [[Gumroad]]
+                  </span>{' '}
+                  上針對{' '}
+                  <span className="inline-block px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40 font-semibold font-mono text-xs hover:bg-purple-500/30 transition cursor-pointer">
+                    [[InstantFlow]]
+                  </span>{' '}
+                  1.4 版本推出調價策略，讓已購買老客戶免費升級，同時把{' '}
+                  <span className="inline-block px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-semibold font-mono text-xs hover:bg-emerald-500/30 transition cursor-pointer">
+                    [[圖庫流]]
+                  </span>{' '}
+                  的自動標籤算法整合進知識庫工作流，吸引第二大腦重度用戶。
+                </>
+              )}
             </p>
           </div>
 
@@ -360,7 +494,13 @@ tags: [閃念日記, 開發, 發布]
           <div className="p-3 rounded-xl bg-purple-950/40 border border-purple-900/50 flex items-center justify-between text-xs text-purple-300">
             <div className="flex items-center space-x-2">
               <Network className="w-4 h-4 text-purple-400 shrink-0" />
-              <span>自動關聯 3 個實體節點，已即時同步至 Obsidian 知識圖譜</span>
+              <span>
+                {t(
+                  'Auto-linked 3 entity nodes, synced to Obsidian Graph View',
+                  '自動關聯 3 個實體節點，已即時同步至 Obsidian 知識圖譜',
+                  '自动关联 3 个实体节点，已即时同步至 Obsidian 知识图谱'
+                )}
+              </span>
             </div>
             <span className="text-[10px] font-mono bg-purple-900/60 px-2 py-0.5 rounded text-purple-200">
               Graph Synced
@@ -626,7 +766,7 @@ tags: [閃念日記, 開發, 發布]
                   <div className="h-4 w-px bg-slate-800 mx-1" />
                   <span className="text-xs font-mono font-bold text-purple-300 flex items-center space-x-1.5">
                     <FileText className="w-3.5 h-3.5 text-purple-400" />
-                    <span>{currentTab.fileName}</span>
+                    <span>{currentTab.fileName[currentLang]}</span>
                   </span>
                 </div>
 
@@ -664,7 +804,7 @@ tags: [閃念日記, 開發, 發布]
                   {/* Copy Button */}
                   {injectionState === 'injected' && (
                     <button
-                      onClick={() => handleCopy(currentTab.rawMarkdown)}
+                      onClick={() => handleCopy(currentTab.rawMarkdown[currentLang])}
                       className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer"
                       title={t('Copy Markdown', '複製 Markdown', '复制 Markdown')}
                     >
@@ -703,7 +843,7 @@ tags: [閃念日記, 開發, 發布]
 
                     <div className="pt-2 flex items-center space-x-2 text-[11px] font-mono text-purple-400/80 bg-purple-950/30 px-3 py-1.5 rounded-xl border border-purple-900/40">
                       <CornerDownRight className="w-3.5 h-3.5" />
-                      <span>{t('Target Note:', '目標筆記：', '目标笔记：')} <code className="text-purple-300 font-bold">{currentTab.fileName}</code></span>
+                      <span>{t('Target Note:', '目標筆記：', '目标笔记：')} <code className="text-purple-300 font-bold">{currentTab.fileName[currentLang]}</code></span>
                     </div>
                   </div>
                 )}
@@ -749,7 +889,7 @@ tags: [閃念日記, 開發, 發布]
                       currentTab.renderedContent
                     ) : (
                       <pre className="text-xs font-mono text-purple-200 leading-relaxed whitespace-pre-wrap selection:bg-purple-500/30 animate-in fade-in duration-300">
-                        {currentTab.rawMarkdown}
+                        {currentTab.rawMarkdown[currentLang]}
                       </pre>
                     )}
                   </div>
