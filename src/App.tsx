@@ -5,8 +5,10 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { Monitor, Download, ArrowDown, Sparkles, Settings, Check, Copy, X } from 'lucide-react';
+import NoticeBanner from './components/NoticeBanner';
 import Navbar from './components/Navbar';
 import InteractivePlayground from './components/InteractivePlayground';
+import ObsidianShowcase from './components/ObsidianShowcase';
 import VoicePurifierAnimation from './components/VoicePurifierAnimation';
 import LanguageGuardrail from './components/LanguageGuardrail';
 import FeatureGrid from './components/FeatureGrid';
@@ -86,16 +88,22 @@ export default function App() {
         <div className="absolute top-[40%] left-[20%] w-[45%] h-[45%] rounded-full bg-violet-200/40 blur-[140px]" />
       </div>
 
-      {/* STICKY HEADER */}
-      <Navbar
-        currentLang={currentLang}
-        onLanguageChange={handleLanguageChange}
-        onNavigate={handleNavigate}
-        customStoreUrl={resolvedStoreUrl}
-        stockFlowUrl={stockFlowUrl}
-      />
+      {/* STICKY TOP CONTAINER WITH EARLY BIRD NOTICE BANNER & NAVBAR */}
+      <div className="fixed top-0 left-0 right-0 z-50 flex flex-col">
+        <NoticeBanner
+          currentLang={currentLang}
+          onNavigateToPricing={() => handleNavigate('pricing-roadmap')}
+        />
+        <Navbar
+          currentLang={currentLang}
+          onLanguageChange={handleLanguageChange}
+          onNavigate={handleNavigate}
+          customStoreUrl={resolvedStoreUrl}
+          stockFlowUrl={stockFlowUrl}
+        />
+      </div>
 
-      <main className="relative z-10 pt-28">
+      <main className="relative z-10 pt-36 sm:pt-40">
         
         {/* HERO SECTION */}
         <section id="hero" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 pt-4">
@@ -270,10 +278,13 @@ export default function App() {
         {/* STRICT 3 LANGUAGES GUARDRAIL */}
         <LanguageGuardrail currentLang={currentLang} />
 
-        {/* INTERACTIVE PLAYGROUND */}
+        {/* INTERACTIVE PLAYGROUND (4 OUTPUT MODES) */}
         <section id="output-modes" className="py-12 bg-transparent relative z-10">
           <InteractivePlayground currentLang={currentLang} />
         </section>
+
+        {/* V1.4 OBSIDIAN DEEP INTEGRATION SHOWCASE */}
+        <ObsidianShowcase currentLang={currentLang} />
 
         {/* FEATURES GRID SECTION */}
         <FeatureGrid currentLang={currentLang} />
