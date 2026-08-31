@@ -27,8 +27,8 @@ export default function Navbar({
       setScrolled(window.scrollY > 20);
 
       // Simple active section detection
-      const sections = ['hero', 'output-modes', 'features', 'pricing-roadmap', 'affiliate', 'faq'];
-      const scrollPosition = window.scrollY + 120;
+      const sections = ['hero', 'output-modes', 'obsidian-integration', 'features', 'pricing-roadmap', 'affiliate', 'faq'];
+      const scrollPosition = window.scrollY + 140;
 
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -48,7 +48,8 @@ export default function Navbar({
   }, []);
 
   const menuItems = [
-    { id: 'output-modes', label: { en: 'Output Modes', zh: '輸出模式', hans: '输出模式' } },
+    { id: 'output-modes', label: { en: 'Output Modes', zh: '四大模式', hans: '四大模式' } },
+    { id: 'obsidian-integration', label: { en: 'Obsidian V1.4', zh: 'Obsidian 聯動', hans: 'Obsidian 联动' } },
     { id: 'features', label: { en: 'Features', zh: '核心特色', hans: '核心特色' } },
     { id: 'pricing-roadmap', label: { en: 'Pricing & Roadmap', zh: '價格與路線圖', hans: '价格与路线图' } },
     { id: 'affiliate', label: { en: 'Affiliate', zh: '夥伴推廣', hans: '伙伴推广' } },
@@ -69,10 +70,10 @@ export default function Navbar({
   return (
     <header
       id="main-nav"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`w-full transition-all duration-300 ${
         scrolled
-          ? 'py-3 px-4 sm:px-6 lg:px-8 bg-white/70 backdrop-blur-xl border-b border-indigo-100/50 shadow-sm'
-          : 'py-5 px-4 sm:px-6 lg:px-8 bg-transparent'
+          ? 'py-3 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-xl border-b border-indigo-100/50 shadow-sm'
+          : 'py-4 px-4 sm:px-6 lg:px-8 bg-white/60 backdrop-blur-md border-b border-slate-200/40'
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">

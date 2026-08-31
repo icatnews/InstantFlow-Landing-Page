@@ -1,4 +1,4 @@
-import { CheckCircle2, ArrowUpRight, ShieldCheck, Sparkles, AudioLines, Volume2, Monitor, Laptop, Layers, Zap, BookOpen, Smile, Target } from 'lucide-react';
+import { CheckCircle2, ArrowUpRight, ShieldCheck, Sparkles, AudioLines, Volume2, Monitor, Laptop, Layers, Zap, BookOpen, Smile, Target, Flame, Gift } from 'lucide-react';
 import React from 'react';
 import { Language } from '../types';
 
@@ -19,13 +19,23 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
       id: 'win-pass',
       title: 'Windows Dual-PC Pass',
       price: '$59',
-      badge: { en: 'Windows Dual-PC', zh: 'Windows 雙機版', hans: 'Windows 双机版' },
+      badge: { en: '[ Early Bird Offer ]', zh: '[ 早鳥限時特惠 ]', hans: '[ 早鸟限时特惠 ]' },
       isPopular: false,
       platformIcon: <Monitor className="w-5 h-5 text-indigo-600" />,
       licenseText: {
         en: 'Authorize up to 2 Windows PCs (Lifetime License)',
         zh: '可授權 2 台 Windows 電腦（終身買斷）',
         hans: '可授权 2 台 Windows 电脑（终身买断）'
+      },
+      priceAlert: {
+        en: '🔥 Price increasing to $79 in v1.4 (Save $20 now)',
+        zh: '🔥 V1.4 正式版即將調漲至 $79（現省 $20）',
+        hans: '🔥 V1.4 正式版即将调涨至 $79（现省 $20）'
+      },
+      buttonText: {
+        en: 'Select on Gumroad ($59) ↗',
+        zh: '前往 Gumroad 選購 ($59) ↗',
+        hans: '前往 Gumroad 选购 ($59) ↗'
       },
       desc: {
         en: 'Perfect for Windows desktop + laptop power users.',
@@ -37,13 +47,23 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
       id: 'mac-pass',
       title: 'Mac Dual-Mac Pass',
       price: '$59',
-      badge: { en: 'Mac Dual-Mac', zh: 'Mac 雙機版', hans: 'Mac 双机版' },
+      badge: { en: '[ Early Bird Offer ]', zh: '[ 早鳥限時特惠 ]', hans: '[ 早鸟限时特惠 ]' },
       isPopular: false,
       platformIcon: <Laptop className="w-5 h-5 text-purple-600" />,
       licenseText: {
         en: 'Authorize up to 2 Mac computers (Lifetime License)',
         zh: '可授權 2 台 Mac 電腦（終身買斷）',
         hans: '可授权 2 台 Mac 电脑（终身买断）'
+      },
+      priceAlert: {
+        en: '🔥 Price increasing to $79 in v1.4 (Save $20 now)',
+        zh: '🔥 V1.4 正式版即將調漲至 $79（現省 $20）',
+        hans: '🔥 V1.4 正式版即将调涨至 $79（现省 $20）'
+      },
+      buttonText: {
+        en: 'Select on Gumroad ($59) ↗',
+        zh: '前往 Gumroad 選購 ($59) ↗',
+        hans: '前往 Gumroad 选购 ($59) ↗'
       },
       desc: {
         en: 'Perfect for MacBook + iMac / Mac Studio creators.',
@@ -55,13 +75,23 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
       id: 'cross-pass',
       title: 'Ultimate Cross-Platform Pass (Win + Mac)',
       price: '$79',
-      badge: { en: '🔥 Hot Pick', zh: '🔥【熱銷推薦】', hans: '🔥【热销推荐】' },
+      badge: { en: '🔥【Hot Pick】Early Bird', zh: '🔥【熱銷推薦】· 早鳥特惠', hans: '🔥【热销推荐】· 早鸟特惠' },
       isPopular: true,
       platformIcon: <Layers className="w-5 h-5 text-indigo-500" />,
       licenseText: {
         en: '【Hot Pick】Simultaneously authorize 1 Windows + 1 Mac',
         zh: '【熱銷推薦】同時擁有 1 台 Windows + 1 台 Mac 授權',
         hans: '【热销推荐】同时拥有 1 台 Windows + 1 台 Mac 授权'
+      },
+      priceAlert: {
+        en: '🔥 Price increasing to $99 in v1.4 (Save $20 now)',
+        zh: '🔥 V1.4 正式版即將調漲至 $99（現省 $20）',
+        hans: '🔥 V1.4 正式版即将调涨至 $99（现省 $20）'
+      },
+      buttonText: {
+        en: 'Select on Gumroad ($79) ↗',
+        zh: '前往 Gumroad 選購 ($79) ↗',
+        hans: '前往 Gumroad 选购 ($79) ↗'
       },
       desc: {
         en: 'Most popular option! Ideal for cross-platform creators needing both Win & Mac.',
@@ -267,6 +297,12 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
                 <div className="p-3 rounded-2xl bg-slate-50 border border-slate-150 text-xs font-semibold text-slate-700 leading-relaxed">
                   {tier.licenseText[currentLang]}
                 </div>
+
+                {/* Price Increase Alert */}
+                <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-800 text-[11px] font-bold flex items-center space-x-1.5">
+                  <Flame className="w-3.5 h-3.5 text-amber-600 shrink-0 fill-amber-500" />
+                  <span>{tier.priceAlert[currentLang]}</span>
+                </div>
               </div>
 
               {/* Buy Action Button */}
@@ -281,12 +317,26 @@ export default function PricingRoadmap({ currentLang, customStoreUrl }: PricingR
                       : 'bg-slate-900 hover:bg-slate-800 text-white shadow-md'
                   }`}
                 >
-                  <span>{t(`Select on Gumroad (${tier.price})`, `前往 Gumroad 選購 (${tier.price})`, `前往 Gumroad 选购 (${tier.price})`)}</span>
+                  <span>{tier.buttonText[currentLang]}</span>
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Lifetime Guarantee Promise Banner */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-purple-900/10 via-indigo-900/10 to-purple-900/10 border border-indigo-200/80 text-center max-w-4xl mx-auto shadow-sm">
+          <p className="text-xs sm:text-sm font-bold text-indigo-950 flex items-center justify-center gap-2 flex-wrap">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 inline" />
+            <span>
+              {t(
+                '✦ Guarantee: Buy once, enjoy free lifetime upgrades including v1.4 and all future releases. Never pay any extra upgrade fees.',
+                '✦ 承諾：一次買斷，終身享有包含 V1.4 在內的所有未來版本免費升級，老用戶絕不加收費用。',
+                '✦ 承诺：一次买断，终身享有包含 V1.4 在内的所有未来版本免费升级，老用户绝不加收费用。'
+              )}
+            </span>
+          </p>
         </div>
 
         {/* Feature Highlights & v1.4 Roadmap side-by-side */}
